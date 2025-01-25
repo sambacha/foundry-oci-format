@@ -1,7 +1,23 @@
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Foundry OCI Format](#foundry-oci-format)
+   * [Approach A](#approach-a)
+      + [Manifest A](#manifest-a)
+   * [Approach B](#approach-b)
+      + [Manifest A](#manifest-a-1)
+   * [Approach C](#approach-c)
+      + [Manifest C](#manifest-c)
+   * [Approach D](#approach-d)
+      + [Manifest D](#manifest-d)
+
+<!-- TOC end -->
+
+<!-- TOC --><a name="foundry-oci-format"></a>
 # Foundry OCI Format
 
 Use OCI Format for Package Manifest encoding
 
+<!-- TOC --><a name="approach-a"></a>
 ## Approach A
 
 ```console
@@ -15,6 +31,7 @@ Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
 Manifest contents:
 ```
+<!-- TOC --><a name="manifest-a"></a>
 ### Manifest A
 ```jsonc
 {
@@ -37,6 +54,7 @@ Manifest contents:
 ```
 
 
+<!-- TOC --><a name="approach-b"></a>
 ## Approach B
 
 ```console
@@ -46,6 +64,7 @@ Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
 Manifest contents:
 ```
+<!-- TOC --><a name="manifest-a-1"></a>
 ### Manifest A
 ```jsonc
 {
@@ -61,6 +80,9 @@ Manifest contents:
 }
 ```
 
+<!-- TOC --><a name="approach-c"></a>
+## Approach C
+
 ```console
 Approach C: minimal config, each ABI as a separate layer.
 
@@ -69,6 +91,7 @@ Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 Manifest contents:
 ```
 
+<!-- TOC --><a name="manifest-c"></a>
 ### Manifest C
 ```jsonc
 {
@@ -109,7 +132,8 @@ Manifest contents:
 }
 ```
 
-### Manifest D
+<!-- TOC --><a name="approach-d"></a>
+## Approach D
 
 ```
 Found 3 ABI files:
@@ -124,6 +148,7 @@ Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 Manifest contents:
 ```
 
+<!-- TOC --><a name="manifest-d"></a>
 ### Manifest D
 
 ```jsonc
