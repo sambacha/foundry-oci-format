@@ -9,7 +9,7 @@ Use OCI Format for Package Manifest encoding
    * [Approach A](#approach-a)
       + [Manifest A](#manifest-a)
    * [Approach B](#approach-b)
-      + [Manifest A](#manifest-a-1)
+      + [Manifest A](#manifest-b)
    * [Approach C](#approach-c)
       + [Manifest C](#manifest-c)
    * [Approach D](#approach-d)
@@ -66,7 +66,7 @@ Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 Manifest contents:
 ```
 <!-- TOC --><a name="manifest-a-1"></a>
-### Manifest A
+### Manifest B
 ```jsonc
 {
   "schemaVersion": 2,
