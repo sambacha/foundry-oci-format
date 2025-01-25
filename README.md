@@ -1,66 +1,492 @@
-## Foundry
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach A: minimal config + single layer with all ABI files.
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-Foundry consists of:
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:02952edcaa6edf9efc442f8ddee3fe6365dcd83c422e65d3e97af6526238308c",
+      "size": 5245
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach B: everything in config, no layers.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-## Documentation
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.solidity.abi.config.v1+tar+gzip",
+    "digest": "sha256:09e226c9136e16a559a5f647edd8f516454a24b031e13ee74886461e93ad3bd5",
+    "size": 5245
+  },
+  "layers": []
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach C: minimal config, each ABI as a separate layer.
 
-https://book.getfoundry.sh/
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-## Usage
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:4b38714f99889fd05a224c56af9c2751b106f566606e312587d0ff16f75f91fe",
+      "size": 3232,
+      "annotations": {
+        "org.opencontainers.image.title": "StdInvariant.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:205546fd52b9c25dbda361c02ac7958d6a67c4609f7fc3ae326866ae33292c21",
+      "size": 10346,
+      "annotations": {
+        "org.opencontainers.image.title": "Test.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:0d5a56f57c384984780d447aed4cdaa9fc9d100e79b5eb11cf90d704f09d6dc5",
+      "size": 132412,
+      "annotations": {
+        "org.opencontainers.image.title": "Vm.sol.abi"
+      }
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach D: referencing another manifest with 'subject'. Example uses Approach A + 'subject'.
+Approach A: minimal config + single layer with all ABI files.
 
-### Build
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge build
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:61d5c159e997cc108d97340bd36d1151d701168bad0dc612c37a9718a0e2907d",
+      "size": 5245
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "size": 9999
+  }
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach A: minimal config + single layer with all ABI files.
 
-### Test
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge test
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:02952edcaa6edf9efc442f8ddee3fe6365dcd83c422e65d3e97af6526238308c",
+      "size": 5245
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach B: everything in config, no layers.
 
-### Format
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge fmt
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.solidity.abi.config.v1+tar+gzip",
+    "digest": "sha256:09e226c9136e16a559a5f647edd8f516454a24b031e13ee74886461e93ad3bd5",
+    "size": 5245
+  },
+  "layers": []
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach C: minimal config, each ABI as a separate layer.
 
-### Gas Snapshots
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge snapshot
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:4b38714f99889fd05a224c56af9c2751b106f566606e312587d0ff16f75f91fe",
+      "size": 3232,
+      "annotations": {
+        "org.opencontainers.image.title": "StdInvariant.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:205546fd52b9c25dbda361c02ac7958d6a67c4609f7fc3ae326866ae33292c21",
+      "size": 10346,
+      "annotations": {
+        "org.opencontainers.image.title": "Test.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:0d5a56f57c384984780d447aed4cdaa9fc9d100e79b5eb11cf90d704f09d6dc5",
+      "size": 132412,
+      "annotations": {
+        "org.opencontainers.image.title": "Vm.sol.abi"
+      }
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach D: referencing another manifest with 'subject'. Example uses Approach A + 'subject'.
+Approach A: minimal config + single layer with all ABI files.
 
-### Anvil
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ anvil
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:61d5c159e997cc108d97340bd36d1151d701168bad0dc612c37a9718a0e2907d",
+      "size": 5245
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "size": 9999
+  }
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach A: minimal config + single layer with all ABI files.
 
-### Deploy
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:02952edcaa6edf9efc442f8ddee3fe6365dcd83c422e65d3e97af6526238308c",
+      "size": 5245
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach B: everything in config, no layers.
 
-### Cast
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ cast <subcommand>
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.solidity.abi.config.v1+tar+gzip",
+    "digest": "sha256:09e226c9136e16a559a5f647edd8f516454a24b031e13ee74886461e93ad3bd5",
+    "size": 5245
+  },
+  "layers": []
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach C: minimal config, each ABI as a separate layer.
 
-### Help
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:4b38714f99889fd05a224c56af9c2751b106f566606e312587d0ff16f75f91fe",
+      "size": 3232,
+      "annotations": {
+        "org.opencontainers.image.title": "StdInvariant.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:205546fd52b9c25dbda361c02ac7958d6a67c4609f7fc3ae326866ae33292c21",
+      "size": 10346,
+      "annotations": {
+        "org.opencontainers.image.title": "Test.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:0d5a56f57c384984780d447aed4cdaa9fc9d100e79b5eb11cf90d704f09d6dc5",
+      "size": 132412,
+      "annotations": {
+        "org.opencontainers.image.title": "Vm.sol.abi"
+      }
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach D: referencing another manifest with 'subject'. Example uses Approach A + 'subject'.
+Approach A: minimal config + single layer with all ABI files.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:61d5c159e997cc108d97340bd36d1151d701168bad0dc612c37a9718a0e2907d",
+      "size": 5245
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "size": 9999
+  }
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach A: minimal config + single layer with all ABI files.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:02952edcaa6edf9efc442f8ddee3fe6365dcd83c422e65d3e97af6526238308c",
+      "size": 5245
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach B: everything in config, no layers.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.solidity.abi.config.v1+tar+gzip",
+    "digest": "sha256:09e226c9136e16a559a5f647edd8f516454a24b031e13ee74886461e93ad3bd5",
+    "size": 5245
+  },
+  "layers": []
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach C: minimal config, each ABI as a separate layer.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:4b38714f99889fd05a224c56af9c2751b106f566606e312587d0ff16f75f91fe",
+      "size": 3232,
+      "annotations": {
+        "org.opencontainers.image.title": "StdInvariant.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:205546fd52b9c25dbda361c02ac7958d6a67c4609f7fc3ae326866ae33292c21",
+      "size": 10346,
+      "annotations": {
+        "org.opencontainers.image.title": "Test.sol.abi"
+      }
+    },
+    {
+      "mediaType": "application/vnd.solidity.abi.file",
+      "digest": "sha256:0d5a56f57c384984780d447aed4cdaa9fc9d100e79b5eb11cf90d704f09d6dc5",
+      "size": 132412,
+      "annotations": {
+        "org.opencontainers.image.title": "Vm.sol.abi"
+      }
+    }
+  ]
+}
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach D: referencing another manifest with 'subject'. Example uses Approach A + 'subject'.
+Approach A: minimal config + single layer with all ABI files.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:61d5c159e997cc108d97340bd36d1151d701168bad0dc612c37a9718a0e2907d",
+      "size": 5245
+    }
+  ],
+  "subject": {
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "size": 9999
+  }
+}

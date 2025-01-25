@@ -1,0 +1,26 @@
+Found 3 ABI files:
+  /usr/local/foundry-manifest/contracts/StdInvariant.sol.abi,
+  /usr/local/foundry-manifest/contracts/Test.sol.abi,
+  /usr/local/foundry-manifest/contracts/Vm.sol.abi
+Approach A: minimal config + single layer with all ABI files.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:02952edcaa6edf9efc442f8ddee3fe6365dcd83c422e65d3e97af6526238308c",
+      "size": 5245
+    }
+  ]
+}

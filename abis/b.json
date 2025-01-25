@@ -1,0 +1,18 @@
+Found 1 ABI files:
+  /usr/local/foundry-manifest/contracts/Test.sol.abi
+Approach B: everything in config, no layers.
+
+Wrote manifest to: /usr/local/foundry-manifest/output/manifest.json
+
+Manifest contents:
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.solidity.abi.config.v1+tar+gzip",
+    "digest": "sha256:49a997f560eddb0bc0f9838bffe347002c98c45c3a4ef6bb5e57028935d420ff",
+    "size": 780
+  },
+  "layers": []
+}

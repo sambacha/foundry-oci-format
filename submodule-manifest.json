@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.example.git-submodules",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.example.git-submodule.layer.v1+json",
+      "digest": "sha256:c230c7258ea9113d1c67d15ace94ea77a6322bf0cf4331aed0fd28d64d004a9c",
+      "size": 180,
+      "annotations": {
+        "org.opencontainers.image.title": "lib/forge-std"
+      }
+    },
+    {
+      "mediaType": "application/vnd.example.git-submodule.layer.v1+json",
+      "digest": "sha256:764e629b337919dab1b2aaf771da86dd39e5cd399d48c3f12085053c9a584fbc",
+      "size": 227,
+      "annotations": {
+        "org.opencontainers.image.title": "lib/openzeppelin-contracts"
+      }
+    }
+  ]
+}

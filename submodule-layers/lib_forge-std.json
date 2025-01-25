@@ -1,0 +1,7 @@
+{
+  "name": "lib/forge-std",
+  "path": "lib/forge-std",
+  "url": "https://github.com/foundry-rs/forge-std",
+  "commit": "bb4ceea94d6f10eeb5b41dc2391c6c8bf8e734ef",
+  "branch": ""
+}

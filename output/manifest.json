@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "mediaType": "application/vnd.oci.image.manifest.v1+json",
+  "artifactType": "application/vnd.solidity.abi",
+  "config": {
+    "mediaType": "application/vnd.oci.empty.v1+json",
+    "digest": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "size": 2
+  },
+  "layers": [
+    {
+      "mediaType": "application/vnd.solidity.abi.layer.v1+tar+gzip",
+      "digest": "sha256:903984aa2ce00879a2868244104d92535933b286c3c71a1edcebe07313370063",
+      "size": 5245
+    }
+  ]
+}
