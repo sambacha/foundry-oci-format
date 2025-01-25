@@ -1,3 +1,8 @@
+<!-- TOC --><a name="foundry-oci-format"></a>
+# Foundry OCI Format
+
+Use OCI Format for Package Manifest encoding
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Foundry OCI Format](#foundry-oci-format)
@@ -12,10 +17,6 @@
 
 <!-- TOC end -->
 
-<!-- TOC --><a name="foundry-oci-format"></a>
-# Foundry OCI Format
-
-Use OCI Format for Package Manifest encoding
 
 <!-- TOC --><a name="approach-a"></a>
 ## Approach A
